@@ -8,7 +8,9 @@ A nice, simple, Web Interface for Chrony NTP
 ## Step-by-Step Guide: Deploying Chrony NTP Web Monitor
 This guide will help you set up, run, and deploy the Chrony NTP Web Monitor using Flask, Gunicorn, and systemd.
 
-To improve stability and prevent crashes, the web interface uses AJAX to update data dynamically instead of relying on full HTML page reloads. This ensures smooth and efficient updates every second without affecting performance.
+The web interface uses AJAX to update data dynamically every second, instead of HTML, improving stability and preventing crashes. Additionally, hostnames are sorted alphabetically, first displaying hostnames with letters, followed by IP addresses.
+
+This guide will help you set up, run, and deploy the Chrony NTP Web Monitor using Flask, Gunicorn, and systemd.
 
 ### 1️⃣ Install Required Packages
 On your Linux server, install the necessary dependencies:
