@@ -26,6 +26,7 @@
             padding: 10px;
             border-radius: 5px;
             overflow-x: auto;
+            white-space: pre-wrap;
         }
         .step {
             font-size: 1.2em;
@@ -44,7 +45,7 @@
 <body>
 
     <h1>Chrony NTP Web Interface</h1>
-    <p>A nice, simple, Web Interface for Chrony NTP.</p>
+    <p>A nice, simple Web Interface for Chrony NTP.</p>
 
     <h2>By Anoniemerd</h2>
 
