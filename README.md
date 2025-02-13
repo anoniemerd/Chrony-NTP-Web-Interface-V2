@@ -28,6 +28,7 @@ mkdir -p ~/chrony_web && cd ~/chrony_web
 python3 -m venv venv
 source venv/bin/activate
 pip install flask gunicorn
+pip install pytz
 ```
 
 ### 3️⃣ Create the Flask App (chrony_web.py)
