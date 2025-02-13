@@ -1,7 +1,8 @@
 # Chrony-NTP-Web-Interface
 A nice, simple, Web Interface for Chrony NTP
 
-![image](https://github.com/user-attachments/assets/a5610b71-0262-48b6-beba-299310861753)
+![image](https://github.com/user-attachments/assets/24f37619-fbaa-46ec-a60f-0f837e967697)
+
 
 ## By Anoniemerd
 
