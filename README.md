@@ -3,22 +3,14 @@ A nice, simple, Web Interface for Chrony NTP
 
 ![image](https://github.com/user-attachments/assets/24f37619-fbaa-46ec-a60f-0f837e967697)
 
+
 ## By Anoniemerd
 
-## Step-by-Step Guide: Deploying Chrony NTP Web Monitor
-This guide will help you set up, run, and deploy the Chrony NTP Web Monitor using Flask, Gunicorn, and systemd.
+### 1️⃣ Install Required Packages
 
-The web interface uses AJAX to update data dynamically every second, instead of HTML, improving stability and preventing crashes. Additionally, hostnames are sorted alphabetically, first displaying hostnames with letters, followed by IP addresses.
+On your Linux server, install the necessary dependencies:
 
-Chrony-NTP-Web-Interface
-
-A nice, simple, Web Interface for Chrony NTP
-
-
-1️⃣ Install Required Packages
-
-Install the necessary dependencies on your Linux server:
-
+bash
 sudo apt update && sudo apt install -y python3 python3-pip python3-venv chrony nginx
 
 2️⃣ Set Up the Project Directory
@@ -30,7 +22,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install flask gunicorn pytz
 
-3️⃣ Create the Flask App
+3️⃣ Create the Flask App (chrony_web.py)
 
 Create the chrony_web.py file inside ~/chrony_web/:
 
