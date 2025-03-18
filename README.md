@@ -10,8 +10,9 @@ A nice, simple, Web Interface for Chrony NTP
 
 On your Linux server, install the necessary dependencies:
 
-bash
+```bash
 sudo apt update && sudo apt install -y python3 python3-pip python3-venv chrony nginx
+```
 
 ### 2️⃣ Set Up the Project Directory
 
