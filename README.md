@@ -10,10 +10,15 @@ This guide will help you set up, run, and deploy the Chrony NTP Web Monitor usin
 
 The web interface uses AJAX to update data dynamically every second, instead of HTML, improving stability and preventing crashes. Additionally, hostnames are sorted alphabetically, first displaying hostnames with letters, followed by IP addresses.
 
-### 1️⃣ Install Required Packages
-On your Linux server, install the necessary dependencies:
+Chrony-NTP-Web-Interface
 
-```bash
+A nice, simple, Web Interface for Chrony NTP
+
+
+1️⃣ Install Required Packages
+
+Install the necessary dependencies on your Linux server:
+
 sudo apt update && sudo apt install -y python3 python3-pip python3-venv chrony nginx
 
 2️⃣ Set Up the Project Directory
@@ -25,7 +30,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip install flask gunicorn pytz
 
-3️⃣ Create the Flask App (chrony_web.py)
+3️⃣ Create the Flask App
 
 Create the chrony_web.py file inside ~/chrony_web/:
 
@@ -33,7 +38,8 @@ nano chrony_web.py
 
 Copy and paste the Flask application code (see attachments).
 
-Save and exit the file (CTRL+X, Y, Enter).
+Save and exit (CTRL+X, Y, Enter).
+
 4️⃣ Run Flask with Gunicorn
 
 Test the setup by running:
@@ -41,27 +47,30 @@ Test the setup by running:
 gunicorn --bind 0.0.0.0:5000 chrony_web:app
 
 If everything works, stop it with CTRL+C.
-🔧 5️⃣ Fix Sudo Permissions for Chrony
 
-To allow chronyc to run without requiring a password (fixing sudo: a password is required errors), follow these steps:
+5️⃣ Fix Sudo Permissions for Chrony
 
-    Open the sudo configuration:
+By default, the chronyc command requires sudo, which systemd cannot provide interactively. To allow chronyc to run without requiring a password, follow these steps:
+
+➤ Step 5.1: Open the sudo configuration
 
 sudo visudo
 
+➤ Step 5.2: Grant permission to run chronyc without a password
+
 Scroll to the bottom and add this line:
 
-<USERNAME> ALL=(ALL) NOPASSWD: /usr/bin/chronyc
+thijmen ALL=(ALL) NOPASSWD: /usr/bin/chronyc
 
-Replace <USERNAME> with the user running the Flask service.
+➤ Step 5.3: Save and exit
 
-Save and exit (CTRL+X, Y, Enter).
+Press CTRL+X, then Y, then Enter.
 
-Restart the service:
+➤ Step 5.4: Restart the service
 
-    sudo systemctl daemon-reload
-    sudo systemctl restart chronyweb.service
-    sudo systemctl status chronyweb.service
+sudo systemctl daemon-reload
+sudo systemctl restart chronyweb.service
+sudo systemctl status chronyweb.service
 
 6️⃣ Create a Systemd Service
 
@@ -69,18 +78,18 @@ To keep the app running, create a systemd service:
 
 sudo nano /etc/systemd/system/chronyweb.service
 
-Edit and paste the following configuration:
+Paste the following configuration:
 
 [Unit]
 Description=Flask Chrony Web Interface
 After=network.target
 
 [Service]
-User=<USERNAME>
-Group=<USERNAME>
-WorkingDirectory=/home/<USERNAME>/chrony_web
-Environment="PATH=/home/<USERNAME>/chrony_web/venv/bin"
-ExecStart=/home/<USERNAME>/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
+User=thijmen
+Group=thijmen
+WorkingDirectory=/home/thijmen/chrony_web
+Environment="PATH=/home/thijmen/chrony_web/venv/bin"
+ExecStart=/home/thijmen/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
 Restart=always
 
 [Install]
@@ -88,7 +97,7 @@ WantedBy=multi-user.target
 
 Save and exit (CTRL+X, Y, Enter).
 
-Reload and start the service:
+➤ Step 6.1: Enable and start the service
 
 sudo systemctl daemon-reload
 sudo systemctl enable chronyweb.service
