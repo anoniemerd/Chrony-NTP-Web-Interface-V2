@@ -52,7 +52,7 @@ sudo visudo
 ```
 ➤ Step 5.2: Grant permission to run chronyc without a password
 
-Scroll to the bottom and add this line: (change the <USER> to the current user yourself)
+Scroll to the bottom and add this line: (change the USER to the current user yourself)
 ```bash
 <USER> ALL=(ALL) NOPASSWD: /usr/bin/chronyc
 ```
