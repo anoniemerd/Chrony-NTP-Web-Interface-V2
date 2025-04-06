@@ -54,7 +54,7 @@ sudo visudo
 
 Scroll to the bottom and add this line: (change the USER to the current user yourself)
 ```bash
-<USER> ALL=(ALL) NOPASSWD: /usr/bin/chronyc
+<USERNAME> ALL=(ALL) NOPASSWD: /usr/bin/chronyc
 ```
 ➤ Step 5.3: Save and exit
 
@@ -73,18 +73,18 @@ To keep the app running, create a systemd service:
 ```bash
 sudo nano /etc/systemd/system/chronyweb.service
 ```
-Paste the following configuration:
+Paste the following configuration: (change <USERNAME> to your username)
 ```bash
 [Unit]
 Description=Flask Chrony Web Interface
 After=network.target
 
 [Service]
-User=thijmen
-Group=thijmen
-WorkingDirectory=/home/thijmen/chrony_web
-Environment="PATH=/home/thijmen/chrony_web/venv/bin"
-ExecStart=/home/thijmen/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
+User=<USERNAME>
+Group=<USERNAME>
+WorkingDirectory=/<USERNAME>/thijmen/chrony_web
+Environment="PATH=/home/<USERNAME>/chrony_web/venv/bin"
+ExecStart=/home/<USERNAME>/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
 Restart=always
 
 [Install]
