@@ -60,12 +60,6 @@ Scroll to the bottom and add this line: (change the USER to the current user you
 
 Press CTRL+X, then Y, then Enter.
 
-➤ Step 5.4: Restart the service
-```bash
-sudo systemctl daemon-reload
-sudo systemctl restart chronyweb.service
-sudo systemctl status chronyweb.service
-```
 
 ### 6️⃣ Create a Systemd Service
 
@@ -82,7 +76,7 @@ After=network.target
 [Service]
 User=<USERNAME>
 Group=<USERNAME>
-WorkingDirectory=/<USERNAME>/thijmen/chrony_web
+WorkingDirectory=/home/<USERNAME>/chrony_web
 Environment="PATH=/home/<USERNAME>/chrony_web/venv/bin"
 ExecStart=/home/<USERNAME>/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
 Restart=always
