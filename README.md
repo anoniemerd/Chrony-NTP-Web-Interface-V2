@@ -21,7 +21,7 @@ Create a dedicated project directory and set up a virtual environment:
 mkdir -p ~/chrony_web && cd ~/chrony_web
 python3 -m venv venv
 source venv/bin/activate
-pip install flask gunicorn pytz
+pip install flask gunicorn
 ```
 
 ### 3️⃣ Create the Flask App (chrony_web.py)
