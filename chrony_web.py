@@ -4,37 +4,23 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Function to retrieve and format the list of clients connected to Chrony
+# Function to retrieve the list of Chrony clients
 def get_chrony_clients():
     try:
         output = subprocess.check_output(["sudo", "chronyc", "clients"], universal_newlines=True)
-        lines = output.strip().split("\n")
-        
-        if len(lines) > 1:
-            separator = lines[-1] if "=" in lines[-1] else None
-            data = lines[1:-1] if separator else lines[1:]
-            
-            text_hosts = [line for line in data if not line.split()[0][0].isdigit()]
-            ip_hosts = [line for line in data if line.split()[0][0].isdigit()]
-            
-            sorted_data = sorted(text_hosts, key=lambda x: x.split()[0]) + sorted(ip_hosts, key=lambda x: x.split()[0])
-            
-            return "\n".join([separator] + [lines[0]] + sorted_data) if separator else "\n".join([lines[0]] + sorted_data)
-        
         return output
     except Exception as e:
         return f"Error: {e}"
 
-# Function to get the current local time
+# Function to get local system time
 def get_local_time():
     try:
-        now = datetime.now()  # Local time
-        formatted_time = now.strftime("%d-%m-%Y, %H:%M:%S")
-        return formatted_time
+        now = datetime.now()
+        return now.strftime("%d-%m-%Y, %H:%M:%S")
     except Exception as e:
         return f"Error: {e}"
 
-# Route for the homepage
+# Route for homepage
 @app.route("/")
 def home():
     html_template = """
@@ -50,7 +36,7 @@ def home():
             function refreshData() {
                 $.getJSON("/data", function(data) {
                     $("#clients").text(data.clients);
-                    $("#ntp-time").text("Local Time: " + data.ntp_time);
+                    $("#ntp-time").text("Local Time: " + data.local_time);
                 });
             }
             setInterval(refreshData, 1000);
@@ -59,8 +45,7 @@ def home():
         <style>
             body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
             .card { border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: fit-content; margin: auto; padding: 15px; }
-            pre { background-color: #212529; color: #f8f9fa; padding: 10px; border-radius: 8px; overflow-x: auto; max-height: 400px; white-space: pre-wrap; word-wrap: break-word; margin: 0 auto; width: fit-content; min-width: 50%; }
-            .table th, .table td { text-align: center; }
+            pre { background-color: #212529; color: #f8f9fa; padding: 10px; border-radius: 8px; overflow-x: auto; max-height: 600px; white-space: pre-wrap; word-wrap: break-word; margin: 0 auto; width: fit-content; min-width: 50%; }
         </style>
     </head>
     <body>
@@ -78,12 +63,13 @@ def home():
     </body>
     </html>
     """
-    return render_template_string(html_template, clients=get_chrony_clients(), ntp_time=get_local_time())
+    return render_template_string(html_template, clients=get_chrony_clients(), local_time=get_local_time())
 
 # API route
 @app.route("/data")
 def data():
-    return jsonify({"clients": get_chrony_clients(), "ntp_time": get_local_time()})
+    return jsonify({"clients": get_chrony_clients(), "local_time": get_local_time()})
 
+# Main entry point
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
