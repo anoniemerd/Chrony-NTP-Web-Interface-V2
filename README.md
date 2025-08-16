@@ -130,3 +130,37 @@ Your app is now running as a background service. Test it in your browser by typi
 ```bash
 http://<IP-ADDRESS>:5000/
 ```
+
+## 🛠️ Technical Summary
+
+This project provides a lightweight **web dashboard** for Chrony NTP clients.  
+Here’s what happens under the hood:
+
+1. **Chrony data collection**  
+   - The Flask backend executes `chronyc clients` (via `subprocess`) to retrieve the current list of NTP clients.  
+   - Output lines are parsed and classified (hostnames, IPv4, IPv6), then sorted for consistent display.  
+
+2. **REST API endpoint**  
+   - The backend exposes a `/data` JSON endpoint returning:  
+     - Parsed clients with statistics (packets, drops, last seen, etc.)  
+     - A timestamp of the local server time  
+     - Error messages (if any)  
+
+3. **Live frontend**  
+   - The `/` route serves a self-contained HTML+JS dashboard built with **Bootstrap 5** and **jQuery**.  
+   - The UI automatically fetches `/data` every second (`setInterval` + AJAX).  
+   - Clients are rendered into **responsive cards** using CSS Grid.
+
+4. **Interactive features**  
+   - Client cards can expand/collapse individually, or all at once.  
+   - Sorting modes: by IP, drop count, or last-seen timestamp.  
+   - Search bar filters results in real-time.  
+   - Theme toggle (light/dark) with preference stored in `localStorage`.  
+   - Open/closed card state is also persisted locally per user.  
+
+5. **Deployment**  
+   - The app is served via **Gunicorn** behind **systemd**, ensuring it runs as a managed background service.  
+   - Optionally, Nginx can be used as a reverse proxy for HTTPS termination.
+
+👉 In short: the Flask app continuously polls Chrony, transforms raw CLI output into structured JSON, and feeds it into a dynamic, user-friendly web UI that refreshes live in your browser.
+
