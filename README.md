@@ -3,6 +3,11 @@
 A simple but powerful **web interface** for monitoring Chrony NTP clients.  
 Built with **Flask + Bootstrap + jQuery**, it provides a clean, responsive UI with live updates.
 
+## 👨‍💻 Author
+
+Created by **anoniemerd** 🇳🇱  
+[GitHub Profile](https://github.com/anoniemerd)
+
 ## ✨ Features
 
 - 🔎 **Live overview** of all Chrony clients (auto-refresh every second)
@@ -17,9 +22,6 @@ Built with **Flask + Bootstrap + jQuery**, it provides a clean, responsive UI wi
 ## 📸 Screenshots
 <img width="3822" height="1941" alt="afbeelding" src="https://github.com/user-attachments/assets/625d6986-eddf-43ad-98fc-5bc8574b5fbf" />
 <img width="3830" height="1261" alt="afbeelding" src="https://github.com/user-attachments/assets/d15a82d0-43bc-40e5-af2a-1ec3c0e7f176" />
-
-
-
 
 
 
