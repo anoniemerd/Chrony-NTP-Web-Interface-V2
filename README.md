@@ -1,4 +1,4 @@
-# ⏱️ Chrony NTP Web Dashboard
+# ⏱️ Chrony NTP Web Interface
 
 A simple but powerful **web interface** for monitoring Chrony NTP clients.  
 Built with **Flask + Bootstrap + jQuery**, it provides a clean, responsive UI with live updates.
