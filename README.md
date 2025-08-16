@@ -30,7 +30,7 @@ Created by **anoniemerd** 🇳🇱
 ### 1️⃣ Install required packages
 On your Linux server, with chrony already installed and running, install the other necessary dependencies:
 ```bash
-sudo apt update && sudo apt install -y python3 python3-pip python3-venv chrony nginx
+sudo apt update && sudo apt install -y python3 python3-pip python3.12-venv chrony nginx
 ```
 
 ### 2️⃣ Fix Sudo Permissions for Chrony
