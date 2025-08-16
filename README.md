@@ -87,42 +87,28 @@ Paste the following configuration: (change <USERNAME> to your username)
 
 ```bash
 [Unit]
-
-Description=Flask  Chrony  Web  Interface
-
+Description=Flask Chrony Web Interface
 After=network.target
 
-  
-
 [Service]
-
 User=<USERNAME>
-
-Group=<USERNAME>
-
 WorkingDirectory=/home/<USERNAME>/chrony_web
-
-Environment="PATH=/home/<USERNAME>/chrony_web/venv/bin"
-
-ExecStart=/home/<USERNAME>/chrony_web/venv/bin/gunicorn  --bind  0.0.0.0:5000  chrony_web:app
-
+ExecStart=/home/<USERNAME>/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
 Restart=always
 
-  
-
 [Install]
-
 WantedBy=multi-user.target
+
 ```
 Save and exit (CTRL+X, Y, Enter).
 
 ➤ Step 6.1: Enable and start the service
 
 ```bash
-sudo  systemctl  daemon-reload
-sudo  systemctl  enable  chronyweb.service
-sudo  systemctl  start  chronyweb.service
-sudo  systemctl  status  chronyweb.service
+sudo systemctl daemon-reload
+sudo systemctl enable chronyweb.service
+sudo systemctl start chronyweb.service
+sudo systemctl status chronyweb.service
 ```
 
 
