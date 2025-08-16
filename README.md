@@ -16,7 +16,8 @@ Built with **Flask + Bootstrap + jQuery**, it provides a clean, responsive UI wi
 
 ## 📸 Screenshots
 <img width="3822" height="1941" alt="afbeelding" src="https://github.com/user-attachments/assets/625d6986-eddf-43ad-98fc-5bc8574b5fbf" />
-<img width="3825" height="1375" alt="afbeelding" src="https://github.com/user-attachments/assets/32df1d96-d5ab-41c1-bcb0-94ba41498297" />
+<img width="3830" height="1261" alt="afbeelding" src="https://github.com/user-attachments/assets/d15a82d0-43bc-40e5-af2a-1ec3c0e7f176" />
+
 
 
 
