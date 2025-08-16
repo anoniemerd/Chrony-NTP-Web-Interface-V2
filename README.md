@@ -133,6 +133,24 @@ Your app is now running as a background service. Test it in your browser by typi
 http://<IP-ADDRESS>:5000/
 ```
 
+## 🔄 Upgrading from V1 to V2
+
+If you want to switch from **V1** to **V2**, follow these steps:
+
+1. Go to your project directory:
+   ```bash
+   cd ~/chrony_web/
+   rm chrony_web.py
+   nano chrony_web.py
+   ```
+2.  Copy and paste the application code (see attachments, chrony_web.py).
+Save and exit (CTRL+X, Y, Enter).   
+3. Restart the chronyweb.service
+	  ```bash
+	  sudo systemctl restart chronyweb.service
+	  ```
+✅ Enjoy the V2 version!
+
 ## 🛠️ Technical Summary
 
 This project provides a lightweight **web dashboard** for Chrony NTP clients.  
@@ -165,4 +183,5 @@ Here’s what happens under the hood:
    - Optionally, Nginx can be used as a reverse proxy for HTTPS termination.
 
 👉 In short: the Flask app continuously polls Chrony, transforms raw CLI output into structured JSON, and feeds it into a dynamic, user-friendly web UI that refreshes live in your browser.
+
 
