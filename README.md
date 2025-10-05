@@ -136,7 +136,7 @@ More commands & explanations: <https://ticc-dash.org/docs.html#manage-the-system
 
 ---
 
-## 🔁 Upgrading from the old version
+## 🔁 Upgrading from the old version (Chrony NTP Web Interface V2)
 
 If you used **Chrony NTP Web Interface V2**, migrate easily:
 
