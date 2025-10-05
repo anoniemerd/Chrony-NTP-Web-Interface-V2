@@ -1,7 +1,7 @@
 # TICC-DASH
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7c242f0d-a4c3-4584-93d8-4c9f7a0862f9" alt="TICC-DASH logo" width="120" />
+  <img src="https://github.com/user-attachments/assets/7c242f0d-a4c3-4584-93d8-4c9f7a0862f9" alt="TICC-DASH logo" width="1024" />
 </p>
 
 <h1 align="center">TICC-DASH</h1>
