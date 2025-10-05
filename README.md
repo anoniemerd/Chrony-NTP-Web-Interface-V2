@@ -14,9 +14,9 @@
   <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square"/>
 </p>
 
-A sleek, live‑updating web interface to monitor your **Chrony NTP clients** — built with **Python (Flask)**, **Bootstrap 5**, and **jQuery/AJAX**.  
-TICC‑DASH is the improved and rebranded successor to **Chrony NTP Web Interface (V2)**.
+A sleek, live‑updating web interface to monitor your **Chrony NTP clients**. Built with Python (Flask) · Bootstrap 5 · Vanilla JS + AJAX (jQuery) · Chrony/chronyc · systemd
 
+**Formerly known as Chrony NTP Web Interface (V2) - now improved and rebranded as TICC-DASH.** 
 ---
 
 ## 🔗 Quick links
