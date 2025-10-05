@@ -40,7 +40,7 @@ TICC‑DASH is the improved and rebranded successor to **Chrony NTP Web Interfac
 - 🔄 **Expandable client rows** for detailed metrics.
 - 💾 **Local storage** remembers your theme and expanded rows.
 - 🧩 **More robust `chronyc` parsing** for hostnames, IPv4, and IPv6.
-- 🧱 **Production‑grade installation** using `systemd`.
+- 🧱 **Production‑grade installation** using `systemd` & `bash`.
 - 📦 **Logical system path:** `/opt/ticc-dash` instead of a user’s home folder.
 - ⚙️ **Automatic systemd setup** with start‑on‑boot and journald logging.
 - 🚀 **One‑line install & uninstall scripts**.
