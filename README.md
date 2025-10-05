@@ -1,173 +1,169 @@
-# ⏱️ Chrony NTP Web Interface V2
+# TICC-DASH
 
-A simple but powerful **web interface** for monitoring Chrony NTP clients.  
-Built with **Flask + Bootstrap + jQuery**, it provides a clean, responsive UI with live updates.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/anoniemerd/test2/main/static/img/ticc-dash-logo.png" alt="TICC-DASH logo" width="120" />
+</p>
 
-## 👨‍💻 Author
+<h1 align="center">TICC-DASH</h1>
+<p align="center"><em>Time Information of Chrony Clients — Dashboard</em></p>
 
-Created by **anoniemerd** 🇳🇱  
-[GitHub Profile](https://github.com/anoniemerd)
+<p align="center">
+  <a href="https://ticc-dash.org" target="_blank"><img src="https://img.shields.io/badge/website-ticc--dash.org-0ea5a5?style=flat-square"/></a>
+  <img src="https://img.shields.io/badge/version-3.0-blue?style=flat-square"/>
+  <img src="https://img.shields.io/badge/python-3.10%2B-green?style=flat-square"/>
+  <img src="https://img.shields.io/badge/license-MIT-yellow?style=flat-square"/>
+</p>
 
-## ✨ Features
+A sleek, live‑updating web interface to monitor your **Chrony NTP clients** — built with **Python (Flask)**, **Bootstrap 5**, and **jQuery/AJAX**.  
+TICC‑DASH is the improved and rebranded successor to **Chrony NTP Web Interface (V2)**.
 
-- 🔎 **Live overview** of all Chrony clients (auto-refresh every second)
-- 📊 **Summary dashboard** (OK / Warning / Critical clients)
-- 🎨 **Light/Dark mode toggle**
-- 🗂️ **Sorting & search** (by IP, drop count, last seen)
-- ⬇️ **Expandable client cards** with detailed info
-- 💾 **State persistence**: open/closed cards & theme saved in localStorage
-- 🖥️ **Responsive layout** with CSS Grid masonry effect
+---
 
+## 🔗 Quick links
 
-## 📸 Screenshots
-<img width="3822" height="1941" alt="afbeelding" src="https://github.com/user-attachments/assets/625d6986-eddf-43ad-98fc-5bc8574b5fbf" />
-<img width="3830" height="1261" alt="afbeelding" src="https://github.com/user-attachments/assets/d15a82d0-43bc-40e5-af2a-1ec3c0e7f176" />
+- 🌐 **Website:** <https://ticc-dash.org>
+- 📥 **Install guide:** <https://ticc-dash.org/install.html>
+- 🗑️ **Uninstall guide:** <https://ticc-dash.org/uninstall.html>
+- 📚 **Docs (how it works, service commands):** <https://ticc-dash.org/docs.html>
+- 🖼️ **Screenshots:** <https://ticc-dash.org/screenshots.html>
+- ℹ️ **About & background:** <https://ticc-dash.org/about.html>
 
+---
 
+## ✨ What’s new vs. the old version (Chrony NTP Web Interface V2)
 
-## ⚙️ Installation Steps :
+- 🎯 **New brand & visuals** — fresh logo, modern typography & improved layout.
+- 🧭 **Centered header** — logo and title perfectly aligned and responsive.
+- 🟢 **Improved status indicators** — compact OK / Warning / Critical badges.
+- 🌓 **Dynamic light/dark themes** with theme persistence.
+- 🔎 **Real‑time search, sorting, and client statistics**.
+- 🔄 **Expandable client rows** for detailed metrics.
+- 💾 **Local storage** remembers your theme and expanded rows.
+- 🧩 **More robust `chronyc` parsing** for hostnames, IPv4, and IPv6.
+- 🧱 **Production‑grade installation** using `bash` & `systemd`.
+- 📦 **Logical system path:** `/opt/ticc-dash` instead of a user’s home folder.
+- ⚙️ **Automatic systemd setup** with start‑on‑boot and journald logging.
+- 🚀 **One‑line install & uninstall scripts**.
 
-### 1️⃣ Install required packages
-On your Linux server, with chrony already installed and running, install the other necessary dependencies:
-```bash
-sudo apt update && sudo apt install -y python3 python3-pip python3.12-venv chrony nginx
-```
+> For a visual tour, see the screenshots page: <https://ticc-dash.org/screenshots.html>.
 
-### 2️⃣ Fix Sudo Permissions for Chrony
+---
 
-By default, the chronyc command requires sudo, which systemd cannot provide interactively. To allow chronyc to run without requiring a password, follow these steps:
+## 🚀 Quick Install
 
-➤ Step 2.1: Open the sudo configuration
-```bash
-sudo  visudo
-```
-➤ Step 2.2: Grant permission to run chronyc without a password
-Scroll to the bottom and add this line: (change the USER to the current user yourself)
-```bash
-<USERNAME> ALL=(ALL) NOPASSWD: /usr/bin/chronyc
-```
-➤ Step 2.3: Save and exit
-
-Press CTRL+X, then Y, then Enter.
-
-
-###  3️⃣ Set Up the Project Directory
-Create a dedicated project directory and set up a virtual environment:
-```bash
-mkdir -p ~/chrony_web && cd ~/chrony_web
-python3 -m venv venv
-source venv/bin/activate
-pip install flask gunicorn
-```
-
-### 4️⃣ Create the Flask App (chrony_web.py)
-Create the chrony_web.py file inside ~/chrony_web/:
-```bash
-nano  chrony_web.py
-```
-Copy and paste the application code (see attachments, chrony_web.py).
-
-Save and exit (CTRL+X, Y, Enter).
-
-
-### 5️⃣ Test the Flask App with Gunicorn
-Test the setup by running:
-```bash
-gunicorn  --bind  0.0.0.0:5000  chrony_web:app
-```
-If everything works, stop it with CTRL+C.
-
-### 6️⃣ Create a Systemd Service
-To keep the app running, create a systemd service:
-```bash
-sudo  nano  /etc/systemd/system/chronyweb.service
-```
-
-Paste the following configuration: (change <USERNAME> to your username)
+Installs into `/opt/ticc-dash` and runs automatically as a system service:
 
 ```bash
-[Unit]
-Description=Flask Chrony Web Interface
-After=network.target
+curl -fsSL https://raw.githubusercontent.com/anoniemerd/test2/main/install_ticc_dash.sh | bash
+```
 
-[Service]
-User=<USERNAME>
-WorkingDirectory=/home/<USERNAME>/chrony_web
-ExecStart=/home/<USERNAME>/chrony_web/venv/bin/gunicorn --bind 0.0.0.0:5000 chrony_web:app
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
+Then open the dashboard at:
 
 ```
-Save and exit (CTRL+X, Y, Enter).
+http://<your-server-ip>:5000/
+```
 
-➤ Step 6.1: Enable and start the service
+> Prefer a step‑by‑step guide? See <https://ticc-dash.org/install.html>.
+
+### 🧹 Uninstall
+
+Clean removal (service, files, and sudoers entry):
 
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable chronyweb.service
-sudo systemctl start chronyweb.service
-sudo systemctl status chronyweb.service
+curl -fsSL https://raw.githubusercontent.com/anoniemerd/test2/main/uninstall_ticc_dash.sh | bash
 ```
 
+Full uninstall notes: <https://ticc-dash.org/uninstall.html>.
 
-### 7️⃣ Finished 🎉
+---
 
-Your app is now running as a background service. Test it in your browser by typing:
+## 🧠 How it works
+
+- Runs `chronyc clients` via `sudo` to collect live NTP client data.
+- Parses and groups hostnames, IPv4 and IPv6.
+- Exposes two endpoints: `/` (dashboard UI) and `/data` (JSON).
+- Frontend uses small AJAX calls every second for live updates.
+- Sorting, filtering, and row expansion handled client‑side.
+
+Technical deep‑dive: <https://ticc-dash.org/docs.html>.
+
+---
+
+## ⚙️ Requirements
+
+- Debian/Ubuntu Linux
+- Python **3.10+**
+- **chrony** service installed and active
+- Sudo access for `/usr/bin/chronyc` (the installer configures a sudoers rule)
+
+---
+
+## 🧩 Install path & structure
+
+```
+/opt/ticc-dash
+├── ticc-dash.py
+├── venv/
+└── static/
+    └── img/
+        └── ticc-dash-logo.png
+```
+
+Systemd unit: `/etc/systemd/system/ticc-dash.service`  
+Sudoers rule: `/etc/sudoers.d/ticc-dash`
+
+---
+
+## 🔧 Managing the service
+
 ```bash
-http://<IP-ADDRESS>:5000/
+sudo systemctl status ticc-dash.service
+sudo systemctl restart ticc-dash.service
+sudo journalctl -u ticc-dash.service -f
 ```
 
-## 🔄 Upgrading from V1 to V2
+More commands & explanations: <https://ticc-dash.org/docs.html#manage-the-systemd-service>.
 
-If you want to switch from **V1** to **V2**, follow these steps:
+---
 
-1. Go to your project directory:
-   ```bash
-   cd ~/chrony_web/
-   rm chrony_web.py
-   nano chrony_web.py
-   ```
-2.  Copy and paste the application code (see attachments, chrony_web.py).
-Save and exit (CTRL+X, Y, Enter).   
-3. Restart the chronyweb.service
-	  ```bash
-	  sudo systemctl restart chronyweb.service
-	  ```
-✅ Enjoy the V2 version!
+## 🔁 Upgrading from the old version
 
-## 🛠️ Technical Summary
+If you used **Chrony NTP Web Interface V2**, migrate easily:
 
-This project provides a lightweight **web dashboard** for Chrony NTP clients.  
-Here’s what happens under the hood:
+1. Stop and remove the old service
+```bash
+sudo systemctl stop chronyweb.service
+sudo systemctl disable chronyweb.service
+sudo rm /etc/systemd/system/chronyweb.service
+sudo rm -rf ~/chrony_web
+```
 
-1. **Chrony data collection**  
-   - The Flask backend executes `chronyc clients` (via `subprocess`) to retrieve the current list of NTP clients.  
-   - Output lines are parsed and classified (hostnames, IPv4, IPv6), then sorted for consistent display.  
+2. Run the TICC‑DASH installer
+```bash
+curl -fsSL https://raw.githubusercontent.com/anoniemerd/test2/main/install_ticc_dash.sh | bash
+```
 
-2. **REST API endpoint**  
-   - The backend exposes a `/data` JSON endpoint returning:  
-     - Parsed clients with statistics (packets, drops, last seen, etc.)  
-     - A timestamp of the local server time  
-     - Error messages (if any)  
+3. Open `http://<your-server-ip>:5000/`.
 
-3. **Live frontend**  
-   - The `/` route serves a self-contained HTML+JS dashboard built with **Bootstrap 5** and **jQuery**.  
-   - The UI automatically fetches `/data` every second (`setInterval` + AJAX).  
-   - Clients are rendered into **responsive cards** using CSS Grid.
+---
 
-4. **Interactive features**  
-   - Client cards can expand/collapse individually, or all at once.  
-   - Sorting modes: by IP, drop count, or last-seen timestamp.  
-   - Search bar filters results in real-time.  
-   - Theme toggle (light/dark) with preference stored in `localStorage`.  
-   - Open/closed card state is also persisted locally per user.  
+## 🧠 Troubleshooting
 
-5. **Deployment**  
-   - The app is served via **Gunicorn** behind **systemd**, ensuring it runs as a managed background service.  
-   - Optionally, Nginx can be used as a reverse proxy for HTTPS termination.
+| Problem | Solution |
+|--------|----------|
+| ❌ No clients showing | Run `sudo chronyc clients` manually to verify |
+| ⚙️ Service not starting | Check logs: `sudo journalctl -u ticc-dash.service -f` |
+| 🔒 Port already in use | Free port 5000 or put a reverse proxy (e.g., Nginx) in front |
+| 🧩 Missing logo | Ensure `ticc-dash-logo.png` exists under `/opt/ticc-dash/static/img/` |
 
-👉 In short: the Flask app continuously polls Chrony, transforms raw CLI output into structured JSON, and feeds it into a dynamic, user-friendly web UI that refreshes live in your browser.
+More tips: <https://ticc-dash.org/docs.html#troubleshooting>.
 
+---
 
+## 👤 Author & License
+
+- Author: **Anoniemerd** — <https://github.com/anoniemerd>
+- Website: <https://ticc-dash.org>
+
+Released under the **MIT License**.  
+© 2025 – TICC‑DASH Project.
