@@ -1,7 +1,8 @@
 # TICC-DASH
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/anoniemerd/test2/main/static/img/ticc-dash-logo.png" alt="TICC-DASH logo" width="120" />
+  <img src="<img width="1024" height="1024" alt="ticc-dash-logo-dark-without-background" src="https://github.com/user-attachments/assets/7555cc36-e0f5-4e97-ac94-bcfdf398437c" />
+" alt="TICC-DASH logo" width="120" />
 </p>
 
 <h1 align="center">TICC-DASH</h1>
