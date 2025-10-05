@@ -1,7 +1,7 @@
 # TICC-DASH
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7c242f0d-a4c3-4584-93d8-4c9f7a0862f9" alt="TICC-DASH logo" width="500" />
+  <img width="500" height="500" alt="ticc-dash-logo-dark-without-background" src="https://github.com/user-attachments/assets/35b6d438-60da-485b-a0d4-c01708e4b059" />
 </p>
 
 <h1 align="center">TICC-DASH</h1>
@@ -30,7 +30,7 @@ TICC‑DASH is the improved and rebranded successor to **Chrony NTP Web Interfac
 
 ---
 
-## ✨ What’s new vs. the old version (Chrony NTP Web Interface V2)
+## ✨ What’s new vs. the old version
 
 - 🎯 **New brand & visuals** — fresh logo, modern typography & improved layout.
 - 🧭 **Centered header** — logo and title perfectly aligned and responsive.
@@ -40,12 +40,22 @@ TICC‑DASH is the improved and rebranded successor to **Chrony NTP Web Interfac
 - 🔄 **Expandable client rows** for detailed metrics.
 - 💾 **Local storage** remembers your theme and expanded rows.
 - 🧩 **More robust `chronyc` parsing** for hostnames, IPv4, and IPv6.
-- 🧱 **Production‑grade installation** using `bash` & `systemd`.
+- 🧱 **Production‑grade installation** using `systemd`.
 - 📦 **Logical system path:** `/opt/ticc-dash` instead of a user’s home folder.
 - ⚙️ **Automatic systemd setup** with start‑on‑boot and journald logging.
 - 🚀 **One‑line install & uninstall scripts**.
 
-> For a visual tour, see the screenshots page: <https://ticc-dash.org/screenshots.html>.
+---
+
+
+## 📷 Screenshots
+
+<img width="1910" height="976" alt="ticc-dash1" src="https://github.com/user-attachments/assets/aa6b70ad-9c64-4914-8f49-020a40c583ef" />
+
+<img width="1912" height="975" alt="ticc-dash4" src="https://github.com/user-attachments/assets/8b25e76c-b0f0-458c-95c8-83d77eda3639" />
+
+
+> For more screenshots, see the screenshots page: <https://ticc-dash.org/screenshots.html>.
 
 ---
 
@@ -63,7 +73,7 @@ Then open the dashboard at:
 http://<your-server-ip>:5000/
 ```
 
-> Prefer a step‑by‑step guide? See <https://ticc-dash.org/install.html>.
+> For more information see <https://ticc-dash.org/install.html>.
 
 ### 🧹 Uninstall
 
@@ -98,7 +108,7 @@ Technical deep‑dive: <https://ticc-dash.org/docs.html>.
 
 ---
 
-## 🧩 Install path & structure
+## 🧩 Installed structure
 
 ```
 /opt/ticc-dash
