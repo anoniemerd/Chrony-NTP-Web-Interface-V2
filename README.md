@@ -153,7 +153,10 @@ sudo rm -rf ~/chrony_web
 curl -fsSL https://raw.githubusercontent.com/anoniemerd/ticc-dash/main/install_ticc_dash.sh | bash
 ```
 
-3. Open `http://<your-server-ip>:5000/`.
+3. Then open the dashboard at:
+```
+http://<your-server-ip>:5000/
+```
 
 ---
 
