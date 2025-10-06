@@ -18,8 +18,8 @@ SERVICE_FILE="/etc/systemd/system/$SERVICE_NAME"
 SUDOERS_FILE="/etc/sudoers.d/ticc-dash"
 
 # Sources in your repo
-REPO_RAW_PY="https://raw.githubusercontent.com/anoniemerd/test2/main/ticc-dash.py"
-REPO_RAW_LOGO="https://raw.githubusercontent.com/anoniemerd/test2/main/static/img/ticc-dash-logo.png"
+REPO_RAW_PY="https://raw.githubusercontent.com/anoniemerd/ticc-dash/main/ticc-dash.py"
+REPO_RAW_LOGO="https://raw.githubusercontent.com/anoniemerd/ticc-dash/main/static/img/ticc-dash-logo.png"
 
 USER_NAME="$(whoami)"
 
