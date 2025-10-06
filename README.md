@@ -32,9 +32,9 @@ A sleek, live‑updating web interface to monitor your **Chrony NTP clients**. B
 
 ## ✨ What’s new vs. the old version
 
-- 🎯 **New brand & visuals** — fresh logo, modern typography & improved layout.
-- 🧭 **Centered header** — logo and title perfectly aligned and responsive.
-- 🟢 **Improved status indicators** — compact OK / Warning / Critical badges.
+- 🎯 **New brand & visuals** - fresh logo, modern typography & improved layout.
+- 🧭 **Centered header** - logo and title perfectly aligned and responsive.
+- 🟢 **Improved status indicators** - compact OK / Warning / Critical badges.
 - 🌓 **Dynamic light/dark themes** with theme persistence.
 - 🔎 **Real‑time search, sorting, and client statistics**.
 - 🔄 **Expandable client rows** for detailed metrics.
