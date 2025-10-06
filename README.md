@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">TICC-DASH</h1>
-<p align="center"><em>Time Information of Chrony Clients — Dashboard</em></p>
+<p align="center"><em>Time Information of Chrony Clients - Dashboard</em></p>
 
 <p align="center">
   <a href="https://ticc-dash.org" target="_blank"><img src="https://img.shields.io/badge/website-ticc--dash.org-0ea5a5?style=flat-square"/></a>
